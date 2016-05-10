@@ -5,7 +5,6 @@
   "description": "Sample for talk about readable e2e tests",
   "scripts": {
     "lint": "node_modules/.bin/jshint e2e/**/*.js",
-    "start": "node app/expressserver.js",
     "test": "npm run lint && node_modules/.bin/protractor conf/default.conf.js",
     "install": "./node_modules/.bin/webdriver-manager update"
   },
