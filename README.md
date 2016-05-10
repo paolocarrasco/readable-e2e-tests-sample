@@ -2,6 +2,8 @@
 
 (Generated with [PageBoy Generator](https://github.com/mranosa/generator-pageboy)).
 
+We will create readable E2E tests for the [Mockaroo](https://www.mockaroo.com/) application.
+
 ## Usage
 
 - Run Tests: `npm test`
