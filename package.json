@@ -4,18 +4,31 @@
   "author": "Paolo Carrasco <paolo.carrasco@gmail.com>",
   "description": "Sample for talk about readable e2e tests",
   "scripts": {
-    "lint": "node_modules/.bin/jshint e2e/**/*.js",
-    "test": "npm run lint && node_modules/.bin/protractor conf/default.conf.js",
-    "install": "./node_modules/.bin/webdriver-manager update"
+    "test": "grunt e2e"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/paolocarrasco/readable-e2e-tests-sample"
   },
   "dependencies": {
+    "astrolabe": "^0.3.6",
+    "chance": "^1.0.3",
+    "coffee-script": "^1.10.0",
     "express": "~3.4.0",
-    "protractor": "3.0.0",
-    "jshint": "^2.9.1"
+    "grunt": "^1.0.1",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-env": "^0.4.4",
+    "grunt-ng-constant": "^2.0.1",
+    "grunt-protractor-runner": "^3.2.0",
+    "grunt-protractor-webdriver": "^0.2.5",
+    "grunt-shell": "^1.3.0",
+    "jasmine-given": "^2.6.4",
+    "load-grunt-tasks": "^3.5.0",
+    "lodash": "^4.12.0",
+    "protractor": "^3.0.0",
+    "protractor-screenshot-reporter": "0.0.5",
+    "request": "^2.72.0",
+    "rimraf": "^2.5.2"
   },
   "license": "MIT"
 }
