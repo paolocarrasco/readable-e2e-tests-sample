@@ -17,11 +17,18 @@ exports.config =
   jasmineNodeOpts:
     isVerbose: true
     defaultTimeoutInterval: 10000
+    print: -> 
 
   onPrepare: ->
-    browser.driver.manage().window().maximize()
     browser.ignoreSynchronization = true
+
+    SpecReporter = require('jasmine-spec-reporter')
+    jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'all'}))
+
+    browser.driver.manage().window().maximize()
+
     require('jasmine-given')
+
     rimraf screenshotsDir, ->
       jasmine.getEnv().addReporter new ScreenShotReporter
         takeScreenShotsOnlyForFailedSpecs: true
