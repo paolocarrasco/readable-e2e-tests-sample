@@ -16,7 +16,7 @@ describe 'Check landing page', ->
     And ->
       expect(page.rowCounterSection.getText()).toBe defaultTextForNumberOfRows
 
-  describe 'changing of the column name', ->
+  describe 'changing of a column name', ->
     newColumnName = 'code'
 
     Given ->
@@ -30,7 +30,7 @@ describe 'Check landing page', ->
       textFoundInPreviewPanel = page.contentOfPreviewDialog.getText()
       expect(textFoundInPreviewPanel).toMatch "^#{newColumnName}"
 
-  describe 'generation of the number of rows defined', ->
+  describe 'generation of the number of rows', ->
     numberOfRows = 15
 
     Given ->
