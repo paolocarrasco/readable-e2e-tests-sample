@@ -1,4 +1,4 @@
-page = require('./landing-page.coffee')
+page = require('../pages/landing-page.coffee')
 
 describe 'Check landing page', ->
 
