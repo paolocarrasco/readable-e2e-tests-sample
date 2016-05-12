@@ -20,8 +20,7 @@ describe 'Check landing page', ->
     newColumnName = 'code'
 
     Given ->
-      page.attributeNameInput.
-          sendKeys protractor.Key.CONTROL, 'a', protractor.Key.NULL, newColumnName
+      page.withColumnName 0, newColumnName
 
     When ->
       page.previewButton.click()
@@ -35,8 +34,7 @@ describe 'Check landing page', ->
     numberOfRows = 15
 
     Given ->
-      page.numberOfRowsToGenerate.
-          sendKeys protractor.Key.CONTROL, 'a', protractor.Key.NULL, numberOfRows
+      page.withNumberOfRowsToGenerate numberOfRows
 
     When ->
       page.previewButton.click()

@@ -16,8 +16,8 @@ exports.config =
 
   jasmineNodeOpts:
     isVerbose: true
-    defaultTimeoutInterval: 10000
-    print: -> 
+    defaultTimeoutInterval: 20000
+    print: ->
 
   onPrepare: ->
     browser.ignoreSynchronization = true
