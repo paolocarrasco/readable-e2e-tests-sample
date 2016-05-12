@@ -1,5 +1,5 @@
-
-Page = require("astrolabe").Page
+Page = require('astrolabe').Page
+KeyHelper = require('./key-helper.coffee')
 
 module.exports = Page.create
   url: get: -> browser.baseUrl
@@ -17,10 +17,8 @@ module.exports = Page.create
 
   withColumnName: value: (position, columnName) ->
     page = @
-    page.attributeNameInput(position).
-        sendKeys protractor.Key.CONTROL, 'a', protractor.Key.NULL, columnName
+    KeyHelper.selectAllAndPutOn page.attributeNameInput(position), columnName
 
-  withNumberOfRowsToGenerate: value: (rows) ->
+  withNumberOfRowsToGenerate: value: (rowQuantity) ->
     page = @
-    page.numberOfRowsToGenerate.
-        sendKeys protractor.Key.CONTROL, 'a', protractor.Key.NULL, rows
+    KeyHelper.selectAllAndPutOn page.numberOfRowsToGenerate, rowQuantity
