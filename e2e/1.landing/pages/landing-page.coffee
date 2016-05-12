@@ -1,5 +1,5 @@
 Page = require('astrolabe').Page
-KeyHelper = require('../helpers/key-helper.coffee')
+KeyHelper = require('../../commons/helpers/key-helper.coffee')
 
 module.exports = Page.create
   url: get: -> browser.baseUrl
