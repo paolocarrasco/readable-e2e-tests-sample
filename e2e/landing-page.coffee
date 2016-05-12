@@ -3,37 +3,44 @@ describe 'Check landing page', ->
   beforeEach ->
     browser.get('/')
 
-  it 'should show a preview of the default test data', ->
+  describe 'preview of the default test data', ->
     defaultTextForNumberOfRows = 'showing first 100 rows'
 
-    element(By.id('preview')).click()
+    When -> element(By.id('preview')).click()
 
-    previewDialog = element(By.id('preview_dialog'))
+    Then ->
+      previewDialog = element(By.id('preview_dialog'))
+      expect(previewDialog.isDisplayed()).toBe true
+    And ->
+      textFoundForNumberOfRows = element(By.id('preview_row_count')).getText()
+      expect(textFoundForNumberOfRows).toBe defaultTextForNumberOfRows
 
-    expect(previewDialog.isDisplayed()).toBe true
-    expect(element(By.id('preview_row_count')).getText()).
-        toBe defaultTextForNumberOfRows
-
-  it 'should change the column name',->
+  describe 'changing of the column name', ->
     newColumnName = 'code'
 
-    element(By.id('schema_columns_attributes_0_name')).
-        sendKeys protractor.Key.CONTROL, 'a', protractor.Key.NULL, newColumnName
+    Given ->
+      element(By.id('schema_columns_attributes_0_name')).
+          sendKeys protractor.Key.CONTROL, 'a', protractor.Key.NULL, newColumnName
 
-    element(By.id('preview')).click()
-    browser.switchTo().frame('preview_iframe')
+    When -> element(By.id('preview')).click()
 
-    expect(element(By.css('pre')).getText()).toMatch "^#{newColumnName}"
+    Then ->
+      browser.switchTo().frame('preview_iframe')
+      textFoundInPreviewPanel = element(By.css('pre')).getText()
+      expect(textFoundInPreviewPanel).toMatch "^#{newColumnName}"
 
-  it 'should generate the number of rows defined', (done) ->
+  describe 'generation of the number of rows defined', ->
     numberOfRows = 15
 
-    element(By.id('num_rows')).
-        sendKeys protractor.Key.CONTROL, 'a', protractor.Key.NULL, numberOfRows
+    Given ->
+      element(By.id('num_rows')).
+          sendKeys protractor.Key.CONTROL, 'a', protractor.Key.NULL, numberOfRows
 
-    element(By.id('preview')).click()
-    browser.switchTo().frame('preview_iframe')
+    When -> element(By.id('preview')).click()
 
-    element(By.css('pre')).getText().then (txt) ->
-      expect(txt.match(///\n///g,'').length).toBe numberOfRows
-      done()
+    Then (done) ->
+      browser.switchTo().frame('preview_iframe')
+      element(By.css('pre')).getText().then (txt) ->
+        numberOfRowsInPreview = txt.match(///\n///g,'').length
+        expect(numberOfRowsInPreview).toBe numberOfRows
+        done()
